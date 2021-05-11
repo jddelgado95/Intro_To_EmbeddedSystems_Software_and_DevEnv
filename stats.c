@@ -126,5 +126,5 @@ void sort_array (unsigned char *array, unsigned int counter){
       }
     }
   }
-  while (flag ==1); // the array is not sorted as long as a swap operation is occurred at least once
+  while (flag ==1); 
 }
