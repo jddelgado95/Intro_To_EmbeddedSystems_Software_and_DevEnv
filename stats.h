@@ -10,7 +10,7 @@
  *****************************************************************************/
 /**
  * @file stats.h 
- * @brief Macros and def functions for the 1st assigment of the intro to embedded
+ * @brief Macros and def for the 1st assigment of the intro to embedded
  *
  *
  * @author Diego Delgado
@@ -28,9 +28,8 @@
  * 
  * @param min: min number of array
  * @param max: max number of array
- * @param med: median of array
  * @param mean: mean of array
- * 
+ * @param med: median of array
  *
  * @return void
  */
