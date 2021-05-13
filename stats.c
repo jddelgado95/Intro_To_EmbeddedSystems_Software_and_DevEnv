@@ -9,16 +9,13 @@
  *
  *****************************************************************************/
 /**
- * @file stats.c
- * @brief 1st assignment Intro Embedded
+ * @file stats.c 
+ * @brief It performs statistical operations to a given array for the 1st assignment. 
  *
- * This file includes all required functions asked in the 1st assigment
- *
- * @author Diego Delgado
- * @date 05.05.2021
+ * @author Diego Delgado jdiegodelgado20
+ * @date 13.05.2021
  *
  */
-
 
 
 #include <stdio.h>
@@ -36,95 +33,66 @@ void main() {
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
   /* Other Variable Declarations Go Here */
-  unsigned char min = 0;
-  float mean = 0;
-  unsigned char med = 0;
-  unsigned char max = 0;
-
   /* Statistics and Printing Functions Go Here */
-  printf("Original array: \n");
-  print_array(&test, SIZE);
-  med = find_median(&test, SIZE);
-  mean = find_mean(&test, SIZE);
-  max = find_maximum(&test, SIZE);
-  min = find_minimum(&test, SIZE);
-  print_statistics(min, max, mean, med);
-  sort_array(&test, SIZE);
-  printf("After some magic: \n");
-  print_array(&test, SIZE);
+  print_statistics(test, SIZE);
 }
 
-void print_statistics (unsigned char min, unsigned char max, float mean, unsigned char med){
-  printf("The minimum is %d \n", min);
-  printf("The maximum is %d \n", max);
-  printf("The mean is %f \n", mean);
-  printf("The median is %d \n", med);
+void print_statistics(unsigned char array[], unsigned int length){
+	printf("The original array:\n\n");
+	print_array(array, length);
+	sort_array(array, length);
+	printf("The Sorted array:\n");
+	print_array(array, length);
+	printf("The Median is: %d\n", find_median(array, length));
+	printf("The Mean is: %d\n", find_mean(array, length));
+	printf("The Max is: %d\n", find_max(array, length));
+	printf("The Min is: %d\n\n", find_min(array, length));	
+	return;
 }
 
-
-void print_array (unsigned char *array, unsigned int counter){
-  for (int i=0; i<counter; i++){
-    printf("%d,", *(array + i));
-  }
-  printf("\n");
+void print_array(unsigned char array[], unsigned int length){
+	for(int i = 0; i < length/8; i++){
+		for(int j = 0; j < length/5; j++){
+		       printf("%3d  ", array[8*i+j]);
+		}
+ 		printf("\n");
+	}
+	
+	printf("\n");	
+	return;
 }
 
-unsigned char find_median (unsigned char *array, unsigned int counter){
-  unsigned char med = 0;
-  med = *(array + (counter / 2) -1);
-  return med;
+unsigned char find_median(unsigned char array[], unsigned int length){
+	return array[(length-1)/2];
 }
 
-float find_mean (unsigned char *array, unsigned int counter){
-  unsigned int store = 0; // store variable
-  float mean = 0;
-  for (int i=0; i<counter; i++){
-    store = store + array[i] /* *(array + i) */;
-  }
-  printf("acc = %d \n", store);
-  mean = store / ((float) counter); //stores 
-  return mean;
+unsigned char find_mean(unsigned char array[], unsigned int length){
+	unsigned int sum = 0;
+	for(int i = 0; i < length; i++){
+		sum += array[i];	
+	}
+
+	return (unsigned char)( sum / length );
 }
 
-unsigned char find_maximum (unsigned char *array, unsigned int counter){
-  unsigned char max = *array; // initalize max variable
-  for (int i=1; i<counter; i++){ // start loop
-    if (*(array + i) > max){
-      max = *(array + i);
-    }
-    else {} // Nothing.
-  }
-  return max;
+unsigned char find_max(unsigned char array[], unsigned int length){
+	return array[length-1];
 }
 
-unsigned char find_minimum (unsigned char *array, unsigned int counter){
-  unsigned char min = *array; // initalize minimum variable
-  for (int i=1; i<counter; i++){ // starts loop
-    if (*(array + i) < min){
-      min = *(array + i);
-    }
-    else {} // Nothing
-  }
-  return min;
+unsigned char find_min(unsigned char array[], unsigned int length){
+	return array[0];
 }
 
-void sort_array (unsigned char *array, unsigned int counter){
-  char flag = 0; //indicates if swap process has occurred in the loop
-  unsigned char temporal;
-  do {
-    flag = 0;
-    for (int index=0; index<counter; index++){
-      if (array[index] > array[index +1] || array[index] == array[index +1]) {
-        continue;
-      }
-      else if (array[index] < array[index +1]) {
-        temporal = array[index];
-        array[index] = array[index+1];
-        array[index+1] = temporal;
-
-        flag = 1; // swap process has ocurred
-      }
-    }
-  }
-  while (flag ==1); // the array is not sorted as long as a swap operation is occurred at least once
+void sort_array(unsigned char array[], unsigned int length){
+	unsigned char tmp;
+	for(int i = 0; i < length; i++){
+		for(int j = i; j < length; j++){
+			if(array[j] < array[i]){
+				tmp = array[j];
+				array[j] = array[i];
+				array[i] = tmp;
+			}
+		}
+	}
+	return;
 }

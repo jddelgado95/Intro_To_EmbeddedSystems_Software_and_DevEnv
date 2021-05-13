@@ -10,104 +10,92 @@
  *****************************************************************************/
 /**
  * @file stats.h 
- * @brief Macros and def for the 1st assigment of the intro to embedded
+ * @brief Header file for the 1st assignment. 
+ *  Performs statistical analysis on a dataset given in the 1st assignment.
  *
+ * 
  *
- * @author Diego Delgado
- * @date 05.05.2021
+ * @author Diego Delgado jdiegodelgado20
+ * @date  13.05.2021
  *
  */
 #ifndef __STATS_H__
 #define __STATS_H__
 
 /**
- * @brief Print and process statistic functions from a given array
+ * @brief A function that prints the statistics operations
  *
- * Takes resulting statistics done on an array and print the
- * values on screen 
- * 
- * @param min: min number of array
- * @param max: max number of array
- * @param mean: mean of array
- * @param med: median of array
+ * @param array: The array containing the dataset of unsigned chars
+ * @param length: The length of the array
  *
- * @return void
+ * @return NULL
  */
-void print_statistics (unsigned char min, unsigned char max, float mean, unsigned char med);
+void print_statistics(unsigned char array[], unsigned int length);
 
 
-/**
- * @brief Prints contents of array
+/** 
+ * @brief Prints the array on screen
  *
- * This function takes the array gived in the 1st assignment and prints it on  
- * screen.
- * 
- * @param array: first element of the array to be printed on the screen
+ * @param array: An array of unsigned chars
+ * @param length: The length of the array
  *
- * @return void
+ * @return NULL
  */
-void print_array (unsigned char *array, unsigned int counter);
+void print_array(unsigned char array[], unsigned int length);
 
 
-/**
- * @brief Compute and find the median of the array
+/** 
+ * @brief Returns the median value using the array given in the assignment
  *
- * This function takes the array and finds
- * its median value .
- * 
- * @param array: first element of the array to be processed
- * @param 
+ * @param array: An array of unsigned chars
+ * @param length: The length of the array
  *
- * @return median: median value of the array.
+ * @return median: The median of the array
  */
-unsigned char find_median (unsigned char *array, unsigned int counter);
+unsigned char find_median(unsigned char array[], unsigned int length);
 
-/**
- * @brief Finds the mean value of the array
- *
- * This function takes the array, compute and find
- * its mean.
- * 
- * @param array: first element of the array to be processed
- *
- * @return mean: mean value of the array.
- */
-float find_mean (unsigned char *array, unsigned int counter);
 
-/**
- * @brief Finds the max value of the array
+/** 
+ * @brief Returns the min value using the array given in the assignment
  *
- * This function takes the array and finds
- * its maximum value.
- * 
- * @param array: first element of the array to be processed
+ * @param array: An array of unsigned chars
+ * @param length: The length of the array
  *
- * @return max: max value of the given array.
+ * @return min:The min of the array
  */
-unsigned char find_maximum (unsigned char *array, unsigned int counter);
+unsigned char find_min(unsigned char array[], unsigned int length);
 
-/**
- * @brief Finds the minimum of the array
- *
- * This function takes the array and finds
- * its minimum value.
- * 
- * @param array: first element of the array to be processed
- *
- * @return minimum: minimum value of the given array.
- */
-unsigned char find_minimum (unsigned char *array, unsigned int counter);
 
-/**
- * @brief Sorts the given array from the largest to smallest
+/** 
+ * @brief Returns the max value using the array given in the assignment
  *
- * This function takes the array and its length, then it sorts
- * the array from the largest to the smallest value using a bubble sort algorithm and returns the sorted array.
- * 
- * @param array: first element of the array to be processed
+ * @param array: An array of unsigned chars
+ * @param length: The length of the array
  *
- * @return median: median value of the given array.
+ * @return mmax: The max of the array
  */
-void sort_array (unsigned char *array, unsigned int counter);
+unsigned char find_max(unsigned char array[], unsigned int length);
+
+
+/** 
+ * @brief Returns the mean value using the array given in the assignment
+ *
+ * @param array: An array of unsigned chars
+ * @param length: The length of the array
+ *
+ * @return mean:The mean of the array
+ */
+unsigned char find_mean(unsigned char array[], unsigned int length);
+
+
+/** 
+ * @brief Sorts the array using selection sort
+ *
+ * Selection sort is a good method to implement in embedded
+ *
+ * @param array: An array of unsigned chars
+ * @param length: The length of the array
+ */
+void sort_array(unsigned char array[], unsigned int length);
 
 #endif /* __STATS_H__ */
